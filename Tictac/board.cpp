@@ -14,7 +14,7 @@ Board::Board()
 }
 
 /// returns true for a win
-bool Board::play(int row, int column, char player)
+Board::eResult Board::play(int row, int column, char player)
 {
     spaces[row][column] = player;
     if (wonBy == ' ')
@@ -23,11 +23,29 @@ bool Board::play(int row, int column, char player)
         if (won)
         {
             wonBy = player;
-            return true;
+            return win;
         }
     }
 
-    return false;
+    if (boardFull())
+        return tie;
+
+    return none;
+}
+
+bool Board::boardFull() const
+{
+    for (int i = 0; i <= 3; ++i)
+    {
+        for (int j = 0; j <= 3; ++j)
+        {
+            if (getSymbol(i, j) == Board::k_emptySpace)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 bool Board::detectWin() const

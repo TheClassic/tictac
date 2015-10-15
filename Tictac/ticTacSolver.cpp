@@ -26,8 +26,11 @@ TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& mov
 {
     // doesn't currently detect tie
     Board newBoard(board);
-    if (newBoard.play(move.first, move.second, symbol))
+    Board::eResult result = newBoard.play(move.first, move.second, symbol);
+    if (Board::eResult::win == result)
         return (symbol == m_desiredWinner) ? Results(1, 0, 0) : Results(0, 0, 1);
+    else if (Board::eResult::tie == result)
+        return Results(0, 1, 0);
     else
     {
         auto answer = determineBestMove(newBoard, getOpposingSymbol(symbol));

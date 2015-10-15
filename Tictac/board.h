@@ -6,9 +6,12 @@ class Board
 public:
     const static char k_emptySpace = ' ';
 
+    enum eResult { win, tie, none};
+
     Board();
-    bool play(int row, int column, char player);
+    eResult play(int row, int column, char player);
     char getSymbol(int row, int column) const;
+    bool boardFull() const;
 
 private:
     bool detectWin() const;
