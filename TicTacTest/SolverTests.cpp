@@ -27,4 +27,16 @@ namespace SolverTests{
 
         EXPECT_EQ(expectedBestMove2, bestMove.first);
     }
+
+    TEST(SolverTests, StartMove)
+    {
+        Board board;
+
+        TicTacSolver solver('x', 'o');
+        auto bestMove = solver.determineBestMove(board, 'x');
+
+        TicTacSolver::Move expectedBestMove(1, 1);
+
+        EXPECT_EQ(expectedBestMove, bestMove.first);
+    }
 }
