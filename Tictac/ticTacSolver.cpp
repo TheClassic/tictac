@@ -62,6 +62,7 @@ std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBest
 {
     Results bestResults((INT_MIN + 1) / 2, (INT_MIN + 1) / 2, 0);
     Move bestMove;
+    const Results instantWin(1, 0, 0);
     for (int i = 0; i <= 3; ++i)
     {
         for (int j = 0; j <= 3; ++j)
@@ -74,6 +75,8 @@ std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBest
                 {
                     bestMove = currentMove;
                     bestResults = result;
+                    if (bestResults == instantWin)
+                        return std::pair<TicTacSolver::Move, TicTacSolver::Results>(bestMove, bestResults);
                 }
             }
 
