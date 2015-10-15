@@ -9,11 +9,11 @@ namespace SolverTests{
         Board board;
 
         board.play(0, 0, 'x');
-        board.play(2, 2, 'x');
+        board.play(0, 2, 'x');
         TicTacSolver solver('x', 'o');
         auto bestMove = solver.determineBestMove(board, 'x');
 
-        TicTacSolver::Move expectedBestMove(1, 1);
+        TicTacSolver::Move expectedBestMove(0, 1);
 
         EXPECT_EQ(expectedBestMove, bestMove.first);
 

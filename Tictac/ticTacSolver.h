@@ -16,6 +16,8 @@ public:
     Results invertResults(Results& result) const;
 
 private:
+    bool compareResults(const Results& result1, const Results& result2) const; /// returns true if the first result is better than the second
+
     char m_desiredWinner;
     char m_desiredLoser;
 };

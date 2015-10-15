@@ -35,10 +35,32 @@ TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& mov
     }
 }
 
+bool TicTacSolver::compareResults(const Results& result1, const Results& result2) const
+{
+    int result1Total = std::get<0>(result1) + std::get<1>(result1) + std::get<2>(result1);
+    int result2Total = std::get<0>(result2) + std::get<1>(result2) + std::get<2>(result2);
+
+    double winPercentage1 = std::get<0>(result1) / result1Total;
+    double winPercentage2 = std::get<0>(result2) / result2Total;
+    
+    if (winPercentage1 > winPercentage2)
+        return true;
+    else if (winPercentage1 == winPercentage2)
+    {
+        double tiePercentage1 = std::get<1>(result1) / result1Total;
+        double tiePercentage2 = std::get<1>(result2) / result2Total;
+
+        if (tiePercentage1 > tiePercentage2)
+            return true;
+    }
+
+    return false;
+}
+
 
 std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBestMove(const Board& board, char symbol) const
 {
-    Results bestResults(INT_MIN, 0, 0);
+    Results bestResults((INT_MIN + 1) / 2, (INT_MIN + 1) / 2, 0);
     Move bestMove;
     for (int i = 0; i <= 3; ++i)
     {
@@ -48,9 +70,8 @@ std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBest
             {
                 Move currentMove(i, j);
                 auto result = testMove(board, currentMove, symbol);
-                if (std::get<0>(result) < std::get<0>(bestResults) || std::get<0>(result) == std::get<0>(bestResults) && std::get<1>(result) < std::get<1>(result))
+                if (compareResults(result, bestResults))
                 {
-                    ///\todo need to create a comparison for results that considers percentages, in order to detect an instant win, and not just most possible wins
                     bestMove = currentMove;
                     bestResults = result;
                 }
