@@ -12,6 +12,8 @@
 
 bool playerMove(GameManager& gm)
 {
+    DrawBoard(gm.getBoard());
+
 invalidMove:
     std::cout << "You are 'x', specify your move.\nRow: ";
     int row;
@@ -43,7 +45,7 @@ invalidMove:
 
 bool computerMove(GameManager& gm)
 {
-    TicTacSolver solver('x', 'o');
+    TicTacSolver solver('o', 'x');
     auto bestMove = solver.determineBestMove(gm.getBoard(), 'o');
     auto result = gm.getBoard().play(bestMove.first.first, bestMove.first.second, 'o');
     if (result == Board::win)
@@ -77,7 +79,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
     while (!board.boardFull())
     {
-        DrawBoard(board);
         if (bPlayerFirst)
         {
             if (!playerMove(gm) || board.boardFull())

@@ -67,4 +67,27 @@ namespace SolverTests{
 
         EXPECT_EQ(expectedBestMove, bestMove.first);
     }
+
+    TEST(SolverTests, twoPossibleMoves)
+    {
+        Board board;
+
+        board.play(0, 0, 'o');
+        board.play(1, 0, 'o');
+        
+        board.play(0, 1, 'x');
+        board.play(1, 1, 'o');
+        board.play(2, 1, 'x');
+
+        board.play(0, 2, 'x');
+        board.play(1, 2, 'x');
+
+        TicTacSolver solver('x', 'o');
+        auto bestMove = solver.determineBestMove(board, 'x');
+
+        TicTacSolver::Move expectedBestMove(2, 2);
+
+        EXPECT_EQ(expectedBestMove, bestMove.first);
+    }
+
 }

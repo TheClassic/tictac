@@ -25,10 +25,10 @@ TicTacSolver::Results TicTacSolver::invertResults(Results& result) const
 /// tests all possible opponent moves
 TicTacSolver::Results TicTacSolver::testOpponentMoves(const Board& board, char symbol) const
 {
-    Results results(0,0,0);
-    for (int i = 0; i <= 3; ++i)
+    Results results(0,1,0);
+    for (int i = 0; i < Board::k_boardSize; ++i)
     {
-        for (int j = 0; j <= 3; ++j)
+        for (int j = 0; j < Board::k_boardSize; ++j)
         {
             if (board.getSymbol(i, j) == Board::k_emptySpace)
             {
@@ -90,9 +90,9 @@ std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBest
     Results bestResults((INT_MIN + 1) / 2, (INT_MIN + 1) / 2, 0);
     Move bestMove;
     const Results instantWin(1, 0, 0);
-    for (int i = 0; i <= 3; ++i)
+    for (int i = 0; i < Board::k_boardSize; ++i)
     {
-        for (int j = 0; j <= 3; ++j)
+        for (int j = 0; j < Board::k_boardSize; ++j)
         {
             if (board.getSymbol(i, j) == Board::k_emptySpace)
             {

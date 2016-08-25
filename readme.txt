@@ -1,0 +1,1 @@
+Latest revision fixes several problems but still in a state where it can't find the right move on a relatively open board
