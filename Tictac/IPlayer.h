@@ -3,5 +3,5 @@
 
 class IPlayer
 {
-    char getSymbol() const = 0;
+    char virtual getSymbol() const = 0;
 };

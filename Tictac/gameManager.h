@@ -5,8 +5,9 @@
 
 class GameManager
 {
+public:
     const IPlayer* getCurrentPlayer() const;
-    const Board* getBoard() const;
+    Board& getBoard() { return board; }
 
     /// returns if move accepted, invalid moves will return false and have no affect
     bool submitMove(IPlayer* player, int row, int column);

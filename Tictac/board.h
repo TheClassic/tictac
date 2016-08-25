@@ -5,6 +5,7 @@ class Board
 {
 public:
     const static char k_emptySpace = ' ';
+    const static int k_boardSize = 3;
 
     enum eResult { win, tie, none};
 
@@ -16,6 +17,6 @@ public:
 private:
     bool detectWin() const;
 
-    char spaces[3][3];
+    char spaces[k_boardSize][k_boardSize];
     char wonBy = k_emptySpace;
 };
