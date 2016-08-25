@@ -12,6 +12,7 @@ public:
     TicTacSolver(char desiredWinner, char desiredLoser);
     std::pair<TicTacSolver::Move, TicTacSolver::Results> determineBestMove(const Board& board, char symbol) const;
     Results testMove(const Board& board, const Move& move, char symbol) const;
+    Results testOpponentMoves(const Board& board, char symbol) const;
     char getOpposingSymbol(char symbol) const;
     Results invertResults(Results& result) const;
 

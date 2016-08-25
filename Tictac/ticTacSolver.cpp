@@ -22,9 +22,30 @@ TicTacSolver::Results TicTacSolver::invertResults(Results& result) const
     return Results(std::get<2>(result), std::get<1>(result), std::get<0>(result));
 }
 
+/// tests all possible opponent moves
+TicTacSolver::Results TicTacSolver::testOpponentMoves(const Board& board, char symbol) const
+{
+    Results results(0,0,0);
+    for (int i = 0; i <= 3; ++i)
+    {
+        for (int j = 0; j <= 3; ++j)
+        {
+            if (board.getSymbol(i, j) == Board::k_emptySpace)
+            {
+                Move currentMove(i, j);
+                Results result = testMove(board, currentMove, symbol);
+                std::get<0>(results) += std::get<0>(result);
+                std::get<1>(results) += std::get<1>(result);
+                std::get<2>(results) += std::get<2>(result);
+            }
+        }
+    }
+    return results;
+}
+
+/// tests a move and returns the results for it
 TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& move, char symbol) const
 {
-    // doesn't currently detect tie
     Board newBoard(board);
     Board::eResult result = newBoard.play(move.first, move.second, symbol);
     if (Board::eResult::win == result)
@@ -33,8 +54,11 @@ TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& mov
         return Results(0, 1, 0);
     else
     {
-        auto answer = determineBestMove(newBoard, getOpposingSymbol(symbol));
-        return (symbol == m_desiredWinner) ? invertResults(answer.second) : answer.second; // if we came in here as the desiredWinner we're finding the opponents bestMove and need to invert the results
+        char nextSymbol = getOpposingSymbol(symbol);
+        if (nextSymbol == m_desiredWinner)
+            return determineBestMove(newBoard, nextSymbol).second;
+        else
+            return testOpponentMoves(newBoard, nextSymbol);
     }
 }
 
