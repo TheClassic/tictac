@@ -63,7 +63,10 @@ TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& mov
 }
 
 
-//we may need to handle an instant win by the opponent better 
+/// this result comparison is setup for a more complicated scenario where the best move does not necessarily guarantee
+/// winning but instead might give the opponent the least opportunity to win
+/// this probably doesn't belong in this class
+/// this is a good opportunity to practice some architectural design using good design principles
 bool TicTacSolver::compareResults(const Results& result1, const Results& result2) const
 {
     double result1Total = std::get<0>(result1) + std::get<1>(result1) + std::get<2>(result1);
