@@ -9,7 +9,9 @@ void DrawBoard(const Board& board)
     {
         for (int j = 0; j < Board::k_boardSize; ++j)
         {
-            std::cout << board.getSymbol(i, j) << " ";
+            char boardSymbol = board.getSymbol(i, j);
+            char printSymbol = Board::k_emptySpace == board.getSymbol(i, j) ? '-' : board.getSymbol(i, j);
+            std::cout << printSymbol << " ";
         }
         std::cout << std::endl;
     }

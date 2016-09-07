@@ -22,6 +22,9 @@ invalidMove:
     int column;
     std::cin >> column;
 
+    --row; //make it easier to use by allowing 1-3
+    --column;
+
     if (!gm.isValidMove(nullptr, row, column))
     {
         std::cout << "Invalid move, try again." << std::endl;
@@ -31,12 +34,12 @@ invalidMove:
     auto result = gm.getBoard().play(row, column, 'x');
     if (result == Board::win)
     {
-        std::cout << "Congratulations, you won";
+        std::cout << "Congratulations, you won" << std::endl;
         return false;
     }
     else if(result == Board::tie)
     {
-        std::cout << "Tie game";
+        std::cout << "Tie game" << std::endl;
         return false;
     }
     return true;
@@ -50,12 +53,16 @@ bool computerMove(GameManager& gm)
     auto result = gm.getBoard().play(bestMove.first.first, bestMove.first.second, 'o');
     if (result == Board::win)
     {
-        std::cout << "You lost!";
+        DrawBoard(gm.getBoard());
+
+        std::cout << "You lost!" << std::endl;
         return false;
     }
     else if(result == Board::tie)
     {
-        std::cout << "Tie game";
+        DrawBoard(gm.getBoard());
+
+        std::cout << "Tie game" << std::endl;
         return false;
     }
     return true;
