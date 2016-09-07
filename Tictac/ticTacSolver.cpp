@@ -62,10 +62,20 @@ TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& mov
     }
 }
 
+
+//we may need to handle an instant win by the opponent better 
 bool TicTacSolver::compareResults(const Results& result1, const Results& result2) const
 {
-    int result1Total = std::get<0>(result1) + std::get<1>(result1) + std::get<2>(result1);
-    int result2Total = std::get<0>(result2) + std::get<1>(result2) + std::get<2>(result2);
+    double result1Total = std::get<0>(result1) + std::get<1>(result1) + std::get<2>(result1);
+    double result2Total = std::get<0>(result2) + std::get<1>(result2) + std::get<2>(result2);
+
+    double lossPercentage1 = std::get<2>(result1) / result1Total;
+    double lossPercentage2 = std::get<2>(result2) / result2Total;
+
+    if (lossPercentage1 < lossPercentage2)
+        return true;
+    else if (lossPercentage2 < lossPercentage1)
+        return false;
 
     double winPercentage1 = std::get<0>(result1) / result1Total;
     double winPercentage2 = std::get<0>(result2) / result2Total;
@@ -87,7 +97,7 @@ bool TicTacSolver::compareResults(const Results& result1, const Results& result2
 
 std::pair<TicTacSolver::Move, TicTacSolver::Results> TicTacSolver::determineBestMove(const Board& board, char symbol) const
 {
-    Results bestResults((INT_MIN + 1) / 2, (INT_MIN + 1) / 2, 0);
+    Results bestResults(0, 0, Board::k_boardSize*Board::k_boardSize);
     Move bestMove;
     const Results instantWin(1, 0, 0);
     for (int i = 0; i < Board::k_boardSize; ++i)

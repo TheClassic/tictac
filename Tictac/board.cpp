@@ -35,9 +35,9 @@ Board::eResult Board::play(int row, int column, char player)
 
 bool Board::boardFull() const
 {
-    for (int i = 0; i <= 3; ++i)
+    for (int i = 0; i < k_boardSize; ++i)
     {
-        for (int j = 0; j <= 3; ++j)
+        for (int j = 0; j < k_boardSize; ++j)
         {
             if (getSymbol(i, j) == Board::k_emptySpace)
             {

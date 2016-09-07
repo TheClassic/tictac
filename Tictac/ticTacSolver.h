@@ -16,9 +16,12 @@ public:
     char getOpposingSymbol(char symbol) const;
     Results invertResults(Results& result) const;
 
-private:
-    bool compareResults(const Results& result1, const Results& result2) const; /// returns true if the first result is better than the second
+    /// returns true if the first result is better than the second
+    /// this was made public solely to test it
+    /// this probably belongs in another class
+    bool compareResults(const Results& result1, const Results& result2) const;
 
+private:
     char m_desiredWinner;
     char m_desiredLoser;
 };

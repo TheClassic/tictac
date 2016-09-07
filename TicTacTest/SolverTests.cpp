@@ -2,7 +2,28 @@
 #include <Tictac/board.h>
 #include <Tictac/ticTacSolver.h>
 
+using Results = TicTacSolver::Results;
+
 namespace SolverTests{
+
+    TEST(SolverTests, CompareResults)
+    {
+        TicTacSolver solver('x', 'o');
+
+        EXPECT_TRUE(solver.compareResults(Results(1, 0, 0), Results(0, 1, 0)));
+        EXPECT_TRUE(solver.compareResults(Results(0, 1, 0), Results(0, 0, 1)));
+        EXPECT_TRUE(solver.compareResults(Results(1, 0, 0), Results(0, 0, 1)));
+        EXPECT_TRUE(solver.compareResults(Results(1, 0, 0), Results(0, 1, 1)));
+        EXPECT_TRUE(solver.compareResults(Results(1, 0, 0), Results(0, 55, 0)));
+        EXPECT_TRUE(solver.compareResults(Results(0, 1, 0), Results(0, 2, 1)));
+        EXPECT_TRUE(solver.compareResults(Results(0, 8, 1), Results(0, 1, 1)));
+
+        /// this is a real world case from the bestDefense test that based on the current implementation of the solver, we would expect to pass
+        EXPECT_TRUE(solver.compareResults(Results(8, 31, 12), Results(10, 6, 11)));
+        EXPECT_FALSE(solver.compareResults(Results(10, 10, 11), Results(8, 33, 12)));
+
+        EXPECT_FALSE(solver.compareResults(Results(4, 0, 1), Results(1, 1, 0)));
+    }
 
     TEST(SolverTests, OneMoveWin)
     {
