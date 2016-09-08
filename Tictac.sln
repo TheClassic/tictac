@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tictac", "Tictac\Tictac.vcxproj", "{C67CF83A-0F9C-4B91-9788-719C357447AC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TicTacTest", "TicTacTest\TicTacTest.vcxproj", "{9CEE80FE-CB50-40FE-A8B9-9863C9B7116B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C67CF83A-0F9C-4B91-9788-719C357447AC} = {C67CF83A-0F9C-4B91-9788-719C357447AC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TicTacToe", "TicTacToe\TicTacToe.vcxproj", "{27D7A840-CEA7-4ABB-95D8-8C16C8F831E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C67CF83A-0F9C-4B91-9788-719C357447AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C67CF83A-0F9C-4B91-9788-719C357447AC}.Debug|Win32.Build.0 = Debug|Win32
+		{C67CF83A-0F9C-4B91-9788-719C357447AC}.Release|Win32.ActiveCfg = Release|Win32
+		{C67CF83A-0F9C-4B91-9788-719C357447AC}.Release|Win32.Build.0 = Release|Win32
+		{9CEE80FE-CB50-40FE-A8B9-9863C9B7116B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9CEE80FE-CB50-40FE-A8B9-9863C9B7116B}.Debug|Win32.Build.0 = Debug|Win32
+		{9CEE80FE-CB50-40FE-A8B9-9863C9B7116B}.Release|Win32.ActiveCfg = Release|Win32
+		{9CEE80FE-CB50-40FE-A8B9-9863C9B7116B}.Release|Win32.Build.0 = Release|Win32
+		{27D7A840-CEA7-4ABB-95D8-8C16C8F831E9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27D7A840-CEA7-4ABB-95D8-8C16C8F831E9}.Debug|Win32.Build.0 = Debug|Win32
+		{27D7A840-CEA7-4ABB-95D8-8C16C8F831E9}.Release|Win32.ActiveCfg = Release|Win32
+		{27D7A840-CEA7-4ABB-95D8-8C16C8F831E9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
