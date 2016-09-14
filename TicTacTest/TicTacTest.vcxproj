@@ -72,6 +72,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoardReaderTests.cpp" />
     <ClCompile Include="BoardTests.cpp" />
     <ClCompile Include="SolverTests.cpp" />
   </ItemGroup>

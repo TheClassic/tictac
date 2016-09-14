@@ -27,6 +27,12 @@
     <ClInclude Include="ticTacSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ultimateBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ultimateBoardReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp">
@@ -36,6 +42,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ticTacSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ultimateBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateBoardReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

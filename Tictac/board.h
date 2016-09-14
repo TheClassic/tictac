@@ -10,9 +10,9 @@ public:
     enum eResult { win, tie, none};
 
     Board();
-    eResult play(int row, int column, char player);
-    char getSymbol(int row, int column) const;
-    bool boardFull() const;
+    virtual eResult play(int row, int column, char player);
+    virtual char getSymbol(int row, int column) const;
+    virtual bool boardFull() const;
 
 private:
     bool detectWin() const;

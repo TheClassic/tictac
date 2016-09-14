@@ -70,6 +70,8 @@
     <ClInclude Include="gameManager.h" />
     <ClInclude Include="IPlayer.h" />
     <ClInclude Include="ticTacSolver.h" />
+    <ClInclude Include="ultimateBoard.h" />
+    <ClInclude Include="ultimateBoardReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
@@ -78,6 +80,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ticTacSolver.cpp" />
+    <ClCompile Include="ultimateBoard.cpp" />
+    <ClCompile Include="UltimateBoardReader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
