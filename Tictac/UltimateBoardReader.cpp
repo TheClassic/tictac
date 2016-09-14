@@ -23,8 +23,8 @@ namespace UltimateBoardReader
             int row = count / (Board::k_boardSize * Board::k_boardSize) - boardRow*Board::k_boardSize;
             int column = count % (Board::k_boardSize * Board::k_boardSize) - boardColumn*Board::k_boardSize;
 
-            auto& board = ultBoard.GetBoard(boardRow, boardColumn);
-            board.play(row, column, c);
+            ultBoard.ChooseInitialBoard(boardRow, boardColumn);
+            ultBoard.play(row, column, c);
 
             in >> c;
             ++count;
