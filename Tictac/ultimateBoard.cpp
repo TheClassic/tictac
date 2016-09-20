@@ -34,5 +34,10 @@ Board::eResult UltimateBoard::play(int row, int column, char player)
     }
 
     return overallState;
+}
+
+char UltimateBoard::getSymbol(int row, int column) const
+{
+    return m_board[activeBoardRow][activeBoardColumn].getSymbol(row, column);
 
 }

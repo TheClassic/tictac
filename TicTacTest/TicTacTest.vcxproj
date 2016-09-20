@@ -75,6 +75,7 @@
     <ClCompile Include="BoardReaderTests.cpp" />
     <ClCompile Include="BoardTests.cpp" />
     <ClCompile Include="SolverTests.cpp" />
+    <ClCompile Include="UltimateTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

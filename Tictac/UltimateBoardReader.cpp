@@ -8,6 +8,8 @@ namespace UltimateBoardReader
         std::ifstream in(filename);
         UltimateBoard ultBoard;
 
+        const char alternateEmptySpot = '_'; // istream won't read whitespace, so we need an alternate for that file i/o
+
         char c;
         in >> c;
         int count = 0;
@@ -24,6 +26,8 @@ namespace UltimateBoardReader
             int column = count % (Board::k_boardSize * Board::k_boardSize) - boardColumn*Board::k_boardSize;
 
             ultBoard.ChooseInitialBoard(boardRow, boardColumn);
+            if (c == alternateEmptySpot)
+                c = Board::k_emptySpace;
             ultBoard.play(row, column, c);
 
             in >> c;
