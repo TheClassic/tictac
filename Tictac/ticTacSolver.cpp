@@ -46,7 +46,9 @@ TicTacSolver::Results TicTacSolver::testOpponentMoves(const Board& board, char s
 /// tests a move and returns the results for it
 TicTacSolver::Results TicTacSolver::testMove(const Board& board, const Move& move, char symbol) const
 {
-    Board newBoard(board);
+    auto clonedBoard = board.Clone(); // need to keep the uniqueptr in scope, probably want to refactor some things to just use a unique ptr
+    Board& newBoard = *clonedBoard.get();
+
     Board::eResult result = newBoard.play(move.first, move.second, symbol);
     if (Board::eResult::win == result)
         return (symbol == m_desiredWinner) ? Results(1, 0, 0) : Results(0, 0, 1);

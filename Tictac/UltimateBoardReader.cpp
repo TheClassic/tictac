@@ -8,7 +8,7 @@ namespace UltimateBoardReader
         std::ifstream in(filename);
         UltimateBoard ultBoard;
 
-        const char alternateEmptySpot = '_'; // istream won't read whitespace, so we need an alternate for that file i/o
+        const char alternateEmptySpot = '-'; // istream won't read whitespace, so we need an alternate for that file i/o
 
         char c;
         in >> c;

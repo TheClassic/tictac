@@ -13,6 +13,11 @@ Board::Board()
     spaces[2][2] = k_emptySpace;
 }
 
+std::unique_ptr<Board> Board::Clone() const
+{
+    return std::unique_ptr<Board>(new Board(*this));
+}
+
 /// returns true for a win
 Board::eResult Board::play(int row, int column, char player)
 {

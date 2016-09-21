@@ -5,7 +5,7 @@
 
 namespace BoardReaderTests{
 
-    // reads a file with a board filled with "-" chars, except for the center square which has a number between "1-9"
+    // reads a file with a board filled with " " chars, except for the center square which has a number between "1-9"
     TEST(BoardReaderTests, readBoard)
     {
         const auto& ultBoard = UltimateBoardReader::CreateBoard("..\\TicTacTest\\data\\ultimateBoard.txt");
@@ -31,7 +31,7 @@ namespace BoardReaderTests{
                         }
                         else
                         {
-                            EXPECT_EQ('-', spot);
+                            EXPECT_EQ(' ', spot);
                         }
                     }
                 }

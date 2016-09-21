@@ -9,7 +9,7 @@ namespace SolverTests{
 
     TEST(SolverTests, UltimateOnePlayWin)
     {
-        auto& ultBoard = UltimateBoardReader::CreateBoard("..\\TicTacTest\\data\\ultimateBoardWinnable.txt");
+        auto& ultBoard = UltimateBoardReader::CreateBoard("..\\TicTacTest\\data\\ultimateBoardEasyWinSimple.txt");
 
         ultBoard.ChooseInitialBoard(2, 2);
 

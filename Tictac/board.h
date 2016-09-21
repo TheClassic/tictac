@@ -1,5 +1,5 @@
 #pragma once
-#include <array>
+#include <memory>
 
 class Board
 {
@@ -10,6 +10,9 @@ public:
     enum eResult { win, tie, none};
 
     Board();
+
+    virtual std::unique_ptr<Board> Clone() const;
+
     virtual eResult play(int row, int column, char player);
     virtual char getSymbol(int row, int column) const;
     virtual bool boardFull() const;

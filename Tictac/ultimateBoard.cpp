@@ -1,5 +1,10 @@
 #include "ultimateBoard.h"
 
+std::unique_ptr<Board> UltimateBoard::Clone() const
+{
+    return std::unique_ptr<Board>(new UltimateBoard(*this));
+}
+
 /*Board& UltimateBoard::GetBoard(int row, int column)
 {
     return m_board[row][column];
@@ -25,13 +30,18 @@ Board::eResult UltimateBoard::play(int row, int column, char player)
 
     auto state = activeBoard.play(row, column, player);
     eResult overallState = Board::none;
-    if (getSymbol(activeBoardRow, activeBoardColumn) == k_emptySpace)
+    if (Board::getSymbol(activeBoardRow, activeBoardColumn) == k_emptySpace)
     {
         if (state == win)
             overallState = Board::play(activeBoardRow, activeBoardColumn, player);
         else if (state == tie)
             overallState = Board::play(activeBoardRow, activeBoardColumn, '.');
     }
+    
+    activeBoardRow = row;
+    activeBoardColumn = column;
+
+    //TODO handle board full state
 
     return overallState;
 }
