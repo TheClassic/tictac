@@ -2,22 +2,22 @@
 
 Board::Board()
 {
-    spaces[0][0] = ' ';
-    spaces[0][1] = ' ';
-    spaces[0][2] = ' ';
-    spaces[1][0] = ' ';
-    spaces[1][1] = ' ';
-    spaces[1][2] = ' ';
-    spaces[2][0] = ' ';
-    spaces[2][1] = ' ';
-    spaces[2][2] = ' ';
+    spaces[0][0] = k_emptySpace;
+    spaces[0][1] = k_emptySpace;
+    spaces[0][2] = k_emptySpace;
+    spaces[1][0] = k_emptySpace;
+    spaces[1][1] = k_emptySpace;
+    spaces[1][2] = k_emptySpace;
+    spaces[2][0] = k_emptySpace;
+    spaces[2][1] = k_emptySpace;
+    spaces[2][2] = k_emptySpace;
 }
 
 /// returns true for a win
 Board::eResult Board::play(int row, int column, char player)
 {
     spaces[row][column] = player;
-    if (wonBy == ' ')
+    if (wonBy == k_emptySpace)
     {
         bool won = detectWin();
         if (won)
@@ -39,7 +39,7 @@ bool Board::boardFull() const
     {
         for (int j = 0; j < k_boardSize; ++j)
         {
-            if (getSymbol(i, j) == Board::k_emptySpace)
+            if (getSymbol(i, j) == k_emptySpace)
             {
                 return false;
             }
@@ -50,14 +50,14 @@ bool Board::boardFull() const
 
 bool Board::detectWin() const
 {
-    if ((spaces[0][0] != ' ' && spaces[0][0] == spaces[0][1] && spaces[0][0] == spaces[0][2]) ||
-        (spaces[1][0] != ' ' && spaces[1][0] == spaces[1][1] && spaces[1][0] == spaces[1][2]) ||
-        (spaces[2][0] != ' ' && spaces[2][0] == spaces[2][1] && spaces[2][0] == spaces[2][2]) ||
-        (spaces[0][0] != ' ' && spaces[0][0] == spaces[1][0] && spaces[0][0] == spaces[2][0]) ||
-        (spaces[0][1] != ' ' && spaces[0][1] == spaces[1][1] && spaces[0][1] == spaces[2][1]) ||
-        (spaces[0][2] != ' ' && spaces[0][2] == spaces[1][2] && spaces[0][2] == spaces[2][2]) ||
-        (spaces[0][0] != ' ' && spaces[0][0] == spaces[1][1] && spaces[0][0] == spaces[2][2]) ||
-        (spaces[0][2] != ' ' && spaces[0][2] == spaces[1][1] && spaces[0][2] == spaces[2][0]))
+    if ((spaces[0][0] != k_emptySpace && spaces[0][0] == spaces[0][1] && spaces[0][0] == spaces[0][2]) ||
+        (spaces[1][0] != k_emptySpace && spaces[1][0] == spaces[1][1] && spaces[1][0] == spaces[1][2]) ||
+        (spaces[2][0] != k_emptySpace && spaces[2][0] == spaces[2][1] && spaces[2][0] == spaces[2][2]) ||
+        (spaces[0][0] != k_emptySpace && spaces[0][0] == spaces[1][0] && spaces[0][0] == spaces[2][0]) ||
+        (spaces[0][1] != k_emptySpace && spaces[0][1] == spaces[1][1] && spaces[0][1] == spaces[2][1]) ||
+        (spaces[0][2] != k_emptySpace && spaces[0][2] == spaces[1][2] && spaces[0][2] == spaces[2][2]) ||
+        (spaces[0][0] != k_emptySpace && spaces[0][0] == spaces[1][1] && spaces[0][0] == spaces[2][2]) ||
+        (spaces[0][2] != k_emptySpace && spaces[0][2] == spaces[1][1] && spaces[0][2] == spaces[2][0]))
     {
         return true;
     }
